@@ -1,0 +1,162 @@
+{% extends "fit/layout.html" %}
+
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/calendar_train.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+{% if error %}
+{{ error }}
+{% endif %}
+
+
+
+<p>
+<td><button id="add" type="button" class="btn btn-secondary" style="margin-top: 5px;">Add training</button></td>
+</p>
+
+<div id="form">
+    <form action="{% url 'training' %}" method="post">
+    {% csrf_token %}
+<p>
+    {{ add.Name }} {{ add.Time }} {{ add.Day}}
+</p>
+<p>
+    {{ add.Description }}
+</p>
+<button type="submit" class="btn btn-success">Save</button>
+</form>
+</div>
+
+<div id="show" style="text-align: center;">
+  <p id="training_name"></p>
+  <p id="training_description"></p>
+  <p><button id="hide" type="button" class="btn btn-success">Hide</button> <button id="delete_button" type="button" class="btn btn-danger">Delete</button> </p>
+</div>
+
+<div id="delete" style="text-align: center;">
+ <p> Are you sure you want to delete?</p>
+  <p><button id="confirm_delete" type="button" class="btn btn-danger">Confirm</button></p>
+</div>
+
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Time/Day</th>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+        <th scope="col">Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">00:00-06:00</th>
+        <td>{% if train.0 %}<a data-id="{{ train.0.id }}" class="training-link" href="#">{{ train.0 }}</a>{% endif %}</td>
+        <td>{% if train.10 %}<a data-id="{{ train.10.id }}" class="training-link" href="#">{{ train.10 }}</a>{% endif %}</td>
+        <td>{% if train.20 %}<a data-id="{{ train.20.id }}" class="training-link" href="#">{{ train.20 }}</a>{% endif %}</td>
+        <td>{% if train.30 %}<a data-id="{{ train.30.id }}" class="training-link" href="#">{{ train.30 }}</a>{% endif %}</td>
+        <td>{% if train.40 %}<a data-id="{{ train.40.id }}" class="training-link" href="#">{{ train.40 }}</a>{% endif %}</td>
+        <td>{% if train.50 %}<a data-id="{{ train.50.id }}" class="training-link" href="#">{{ train.50 }}</a>{% endif %}</td>
+        <td>{% if train.60 %}<a data-id="{{ train.60.id }}" class="training-link" href="#">{{ train.60 }}</a>{% endif %}</td>
+        </tr>
+        <tr>
+        <th scope="row">06:00-08:00</th>
+        <td>{% if train.1 %}<a data-id="{{ train.1.id }}" class="training-link" href="#">{{ train.1 }}</a>{% endif %}</td>
+        <td>{% if train.11 %}<a data-id="{{ train.11.id }}" class="training-link" href="#">{{ train.11 }}</a>{% endif %}</td>
+        <td>{% if train.21 %}<a data-id="{{ train.21.id }}" class="training-link" href="#">{{ train.21 }}</a>{% endif %}</td>
+        <td>{% if train.31 %}<a data-id="{{ train.31.id }}" class="training-link" href="#">{{ train.31 }}</a>{% endif %}</td>
+        <td>{% if train.41 %}<a data-id="{{ train.41.id }}" class="training-link" href="#">{{ train.41 }}</a>{% endif %}</td>
+        <td>{% if train.51 %}<a data-id="{{ train.51.id }}" class="training-link" href="#">{{ train.51 }}</a>{% endif %}</td>
+        <td>{% if train.61 %}<a data-id="{{ train.61.id }}" class="training-link" href="#">{{ train.61 }}</a>{% endif %}</td>
+        </tr>
+      <tr>
+        <th scope="row">08:00-10:00</th>
+        <td>{% if train.2 %}<a data-id="{{ train.2.id }}" class="training-link" href="#">{{ train.2 }}</a>{% endif %}</td>
+        <td>{% if train.12 %}<a data-id="{{ train.12.id }}" class="training-link" href="#">{{ train.12 }}</a>{% endif %}</td>
+        <td>{% if train.22 %}<a data-id="{{ train.22.id }}" class="training-link" href="#">{{ train.22 }}</a>{% endif %}</td>
+        <td>{% if train.32 %}<a data-id="{{ train.32.id }}" class="training-link" href="#">{{ train.32 }}</a>{% endif %}</td>
+        <td>{% if train.42 %}<a data-id="{{ train.42.id }}" class="training-link" href="#">{{ train.42 }}</a>{% endif %}</td>
+        <td>{% if train.52 %}<a data-id="{{ train.52.id }}" class="training-link" href="#">{{ train.52 }}</a>{% endif %}</td>
+        <td>{% if train.62 %}<a data-id="{{ train.62.id }}" class="training-link" href="#">{{ train.62 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">10:00-12:00</th>
+        <td>{% if train.3 %}<a data-id="{{ train.3.id }}" class="training-link" href="#">{{ train.3 }}</a>{% endif %}</td>
+        <td>{% if train.13 %}<a data-id="{{ train.13.id }}" class="training-link" href="#">{{ train.13 }}</a>{% endif %}</td>
+        <td>{% if train.23 %}<a data-id="{{ train.23.id }}" class="training-link" href="#">{{ train.23 }}</a>{% endif %}</td>
+        <td>{% if train.33 %}<a data-id="{{ train.33.id }}" class="training-link" href="#">{{ train.33 }}</a>{% endif %}</td>
+        <td>{% if train.43 %}<a data-id="{{ train.43.id }}" class="training-link" href="#">{{ train.43 }}</a>{% endif %}</td>
+        <td>{% if train.53 %}<a data-id="{{ train.53.id }}" class="training-link" href="#">{{ train.53 }}</a>{% endif %}</td>
+        <td>{% if train.63 %}<a data-id="{{ train.63.id }}" class="training-link" href="#">{{ train.63 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">12:00-14:00</th>
+        <td>{% if train.4 %}<a data-id="{{ train.4.id }}" class="training-link" href="#">{{ train.4 }}</a>{% endif %}</td>
+        <td>{% if train.14 %}<a data-id="{{ train.14.id }}" class="training-link" href="#">{{ train.14 }}</a>{% endif %}</td>
+        <td>{% if train.24 %}<a data-id="{{ train.24.id }}" class="training-link" href="#">{{ train.24 }}</a>{% endif %}</td>
+        <td>{% if train.34 %}<a data-id="{{ train.34.id }}" class="training-link" href="#">{{ train.34 }}</a>{% endif %}</td>
+        <td>{% if train.44 %}<a data-id="{{ train.44.id }}" class="training-link" href="#">{{ train.44 }}</a>{% endif %}</td>
+        <td>{% if train.54 %}<a data-id="{{ train.54.id }}" class="training-link" href="#">{{ train.54 }}</a>{% endif %}</td>
+        <td>{% if train.64 %}<a data-id="{{ train.64.id }}" class="training-link" href="#">{{ train.64 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">14:00-16:00</th>
+        <td>{% if train.5 %}<a data-id="{{ train.5.id }}" class="training-link" href="#">{{ train.5 }}</a>{% endif %}</td>
+        <td>{% if train.15 %}<a data-id="{{ train.15.id }}" class="training-link" href="#">{{ train.15 }}</a>{% endif %}</td>
+        <td>{% if train.25 %}<a data-id="{{ train.25.id }}" class="training-link" href="#">{{ train.25 }}</a>{% endif %}</td>
+        <td>{% if train.35 %}<a data-id="{{ train.35.id }}" class="training-link" href="#">{{ train.35 }}</a>{% endif %}</td>
+        <td>{% if train.45 %}<a data-id="{{ train.45.id }}" class="training-link" href="#">{{ train.45 }}</a>{% endif %}</td>
+        <td>{% if train.55 %}<a data-id="{{ train.55.id }}" class="training-link" href="#">{{ train.55 }}</a>{% endif %}</td>
+        <td>{% if train.65 %}<a data-id="{{ train.65.id }}" class="training-link" href="#">{{ train.65 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">16:00-18:00</th>
+        <td>{% if train.6 %}<a data-id="{{ train.6.id }}" class="training-link" href="#">{{ train.6 }}</a>{% endif %}</td>
+        <td>{% if train.16 %}<a data-id="{{ train.16.id }}" class="training-link" href="#">{{ train.16 }}</a>{% endif %}</td>
+        <td>{% if train.26 %}<a data-id="{{ train.26.id }}" class="training-link" href="#">{{ train.26 }}</a>{% endif %}</td>
+        <td>{% if train.36 %}<a data-id="{{ train.36.id }}" class="training-link" href="#">{{ train.36 }}</a>{% endif %}</td>
+        <td>{% if train.46 %}<a data-id="{{ train.46.id }}" class="training-link" href="#">{{ train.46 }}</a>{% endif %}</td>
+        <td>{% if train.56 %}<a data-id="{{ train.56.id }}" class="training-link" href="#">{{ train.56 }}</a>{% endif %}</td>
+        <td>{% if train.66 %}<a data-id="{{ train.66.id }}" class="training-link" href="#">{{ train.66 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">18:00-20:00</th>
+        <td>{% if train.7 %}<a data-id="{{ train.7.id }} class="training-link" href="#">{{ train.7 }}</a>{% endif %}</td>
+        <td>{% if train.17 %}<a data-id="{{ train.17.id }}" class="training-link" href="#">{{ train.17 }}</a>{% endif %}</td>
+        <td>{% if train.27 %}<a data-id="{{ train.27.id }}" class="training-link" href="#">{{ train.27 }}</a>{% endif %}</td>
+        <td>{% if train.37 %}<a data-id="{{ train.37.id }}" class="training-link" href="#">{{ train.37 }}</a>{% endif %}</td>
+        <td>{% if train.47 %}<a data-id="{{ train.47.id }}" class="training-link" href="#">{{ train.47 }}</a>{% endif %}</td>
+        <td>{% if train.57 %}<a data-id="{{ train.57.id }}" class="training-link" href="#">{{ train.57 }}</a>{% endif %}</td>
+        <td>{% if train.67 %}<a data-id="{{ train.67.id }}" class="training-link" href="#">{{ train.67 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">20:00-22:00</th>
+        <td>{% if train.8 %}<a data-id="{{ train.8.id }}" class="training-link" href="#">{{ train.8 }}</a>{% endif %}</td>
+        <td>{% if train.18 %}<a data-id="{{ train.18.id }}" class="training-link" href="#">{{ train.18 }}</a>{% endif %}</td>
+        <td>{% if train.28 %}<a data-id="{{ train.28.id }}" class="training-link" href="#">{{ train.28 }}</a>{% endif %}</td>
+        <td>{% if train.38 %}<a data-id="{{ train.38.id }}" class="training-link" href="#">{{ train.38 }}</a>{% endif %}</td>
+        <td>{% if train.48 %}<a data-id="{{ train.48.id }}" class="training-link" href="#">{{ train.48 }}</a>{% endif %}</td>
+        <td>{% if train.58 %}<a data-id="{{ train.58.id }}" class="training-link" href="#">{{ train.58 }}</a>{% endif %}</td>
+        <td>{% if train.68 %}<a data-id="{{ train.68.id }}" class="training-link" href="#">{{ train.68 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">22:00-00:00</th>
+        <td>{% if train.9 %}<a data-id="{{ train.9.id }}" class="training-link" href="#">{{ train.9 }}</a>{% endif %}</td>
+        <td>{% if train.19 %}<a data-id="{{ train.19.id }}" class="training-link" href="#">{{ train.19 }}</a>{% endif %}</td>
+        <td>{% if train.29 %}<a data-id="{{ train.29.id }}" class="training-link" href="#">{{ train.29 }}</a>{% endif %}</td>
+        <td>{% if train.39 %}<a data-id="{{ train.39.id }}" class="training-link" href="#">{{ train.39 }}</a>{% endif %}</td>
+        <td>{% if train.49 %}<a data-id="{{ train.49.id }}" class="training-link" href="#">{{ train.49 }}</a>{% endif %}</td>
+        <td>{% if train.59 %}<a data-id="{{ train.59.id }}" class="training-link" href="#">{{ train.59 }}</a>{% endif %}</td>
+        <td>{% if train.69 %}<a data-id="{{ train.69.id }}" class="training-link" href="#">{{ train.69 }}</a>{% endif %}</td>
+      </tr>
+          </tbody>
+  </table>
+{% endblock %}
+

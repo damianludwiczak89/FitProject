@@ -1,0 +1,163 @@
+{% extends "fit/layout.html" %}
+
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/calendar_diet.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+{% if error %}
+{{ error }}
+{% endif %}
+
+
+
+<p>
+<td><button id="add" type="button" class="btn btn-secondary" style="margin-top: 5px;">Add meal</button></td>
+</p>
+
+<div id="form">
+    <form action="{% url 'diet' %}" method="post">
+    {% csrf_token %}
+<p>
+    {{ add.Name }} {{ add.Time }} {{ add.Day}}
+</p>
+<p>
+    {{ add.Description }}
+</p>
+<button type="submit" class="btn btn-success">Save</button>
+</form>
+</div>
+
+<div id="show" style="text-align: center;">
+  <p id="meal_name"></p>
+  <p id="meal_description"></p>
+  <p><button id="hide" type="button" class="btn btn-success">Hide</button> <button id="delete_button" type="button" class="btn btn-danger">Delete</button> </p>
+</div>
+
+<div id="delete" style="text-align: center;">
+ <p> Are you sure you want to delete?</p>
+  <p><button id="confirm_delete" type="button" class="btn btn-danger">Confirm</button></p>
+</div>
+</div>
+
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Time/Day</th>
+        <th scope="col">Monday</th>
+        <th scope="col">Tuesday</th>
+        <th scope="col">Wednesday</th>
+        <th scope="col">Thursday</th>
+        <th scope="col">Friday</th>
+        <th scope="col">Saturday</th>
+        <th scope="col">Sunday</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">00:00-06:00</th>
+        <td>{% if meal.0 %}<a data-id="{{ meal.0.id }}" class="meal-link" href="#">{{ meal.0 }}</a>{% endif %}</td>
+        <td>{% if meal.10 %}<a data-id="{{ meal.10.id }}" class="meal-link" href="#">{{ meal.10 }}</a>{% endif %}</td>
+        <td>{% if meal.20 %}<a data-id="{{ meal.20.id }}" class="meal-link" href="#">{{ meal.20 }}</a>{% endif %}</td>
+        <td>{% if meal.30 %}<a data-id="{{ meal.30.id }}" class="meal-link" href="#">{{ meal.30 }}</a>{% endif %}</td>
+        <td>{% if meal.40 %}<a data-id="{{ meal.40.id }}" class="meal-link" href="#">{{ meal.40 }}</a>{% endif %}</td>
+        <td>{% if meal.50 %}<a data-id="{{ meal.50.id }}" class="meal-link" href="#">{{ meal.50 }}</a>{% endif %}</td>
+        <td>{% if meal.60 %}<a data-id="{{ meal.60.id }}" class="meal-link" href="#">{{ meal.60 }}</a>{% endif %}</td>
+        </tr>
+        <tr>
+        <th scope="row">06:00-08:00</th>
+        <td>{% if meal.1 %}<a data-id="{{ meal.1.id }}" class="meal-link" href="#">{{ meal.1 }}</a>{% endif %}</td>
+        <td>{% if meal.11 %}<a data-id="{{ meal.11.id }}" class="meal-link" href="#">{{ meal.11 }}</a>{% endif %}</td>
+        <td>{% if meal.21 %}<a data-id="{{ meal.21.id }}" class="meal-link" href="#">{{ meal.21 }}</a>{% endif %}</td>
+        <td>{% if meal.31 %}<a data-id="{{ meal.31.id }}" class="meal-link" href="#">{{ meal.31 }}</a>{% endif %}</td>
+        <td>{% if meal.41 %}<a data-id="{{ meal.41.id }}" class="meal-link" href="#">{{ meal.41 }}</a>{% endif %}</td>
+        <td>{% if meal.51 %}<a data-id="{{ meal.51.id }}" class="meal-link" href="#">{{ meal.51 }}</a>{% endif %}</td>
+        <td>{% if meal.61 %}<a data-id="{{ meal.61.id }}" class="meal-link" href="#">{{ meal.61 }}</a>{% endif %}</td>
+        </tr>
+      <tr>
+        <th scope="row">08:00-10:00</th>
+        <td>{% if meal.2 %}<a data-id="{{ meal.2.id }}" class="meal-link" href="#">{{ meal.2 }}</a>{% endif %}</td>
+        <td>{% if meal.12 %}<a data-id="{{ meal.12.id }}" class="meal-link" href="#">{{ meal.12 }}</a>{% endif %}</td>
+        <td>{% if meal.22 %}<a data-id="{{ meal.22.id }}" class="meal-link" href="#">{{ meal.22 }}</a>{% endif %}</td>
+        <td>{% if meal.32 %}<a data-id="{{ meal.32.id }}" class="meal-link" href="#">{{ meal.32 }}</a>{% endif %}</td>
+        <td>{% if meal.42 %}<a data-id="{{ meal.42.id }}" class="meal-link" href="#">{{ meal.42 }}</a>{% endif %}</td>
+        <td>{% if meal.52 %}<a data-id="{{ meal.52.id }}" class="meal-link" href="#">{{ meal.52 }}</a>{% endif %}</td>
+        <td>{% if meal.62 %}<a data-id="{{ meal.62.id }}" class="meal-link" href="#">{{ meal.62 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">10:00-12:00</th>
+        <td>{% if meal.3 %}<a data-id="{{ meal.3.id }}" class="meal-link" href="#">{{ meal.3 }}</a>{% endif %}</td>
+        <td>{% if meal.13 %}<a data-id="{{ meal.13.id }}" class="meal-link" href="#">{{ meal.13 }}</a>{% endif %}</td>
+        <td>{% if meal.23 %}<a data-id="{{ meal.23.id }}" class="meal-link" href="#">{{ meal.23 }}</a>{% endif %}</td>
+        <td>{% if meal.33 %}<a data-id="{{ meal.33.id }}" class="meal-link" href="#">{{ meal.33 }}</a>{% endif %}</td>
+        <td>{% if meal.43 %}<a data-id="{{ meal.43.id }}" class="meal-link" href="#">{{ meal.43 }}</a>{% endif %}</td>
+        <td>{% if meal.53 %}<a data-id="{{ meal.53.id }}" class="meal-link" href="#">{{ meal.53 }}</a>{% endif %}</td>
+        <td>{% if meal.63 %}<a data-id="{{ meal.63.id }}" class="meal-link" href="#">{{ meal.63 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">12:00-14:00</th>
+        <td>{% if meal.4 %}<a data-id="{{ meal.4.id }}" class="meal-link" href="#">{{ meal.4 }}</a>{% endif %}</td>
+        <td>{% if meal.14 %}<a data-id="{{ meal.14.id }}" class="meal-link" href="#">{{ meal.14 }}</a>{% endif %}</td>
+        <td>{% if meal.24 %}<a data-id="{{ meal.24.id }}" class="meal-link" href="#">{{ meal.24 }}</a>{% endif %}</td>
+        <td>{% if meal.34 %}<a data-id="{{ meal.34.id }}" class="meal-link" href="#">{{ meal.34 }}</a>{% endif %}</td>
+        <td>{% if meal.44 %}<a data-id="{{ meal.44.id }}" class="meal-link" href="#">{{ meal.44 }}</a>{% endif %}</td>
+        <td>{% if meal.54 %}<a data-id="{{ meal.54.id }}" class="meal-link" href="#">{{ meal.54 }}</a>{% endif %}</td>
+        <td>{% if meal.64 %}<a data-id="{{ meal.64.id }}" class="meal-link" href="#">{{ meal.64 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">14:00-16:00</th>
+        <td>{% if meal.5 %}<a data-id="{{ meal.5.id }}" class="meal-link" href="#">{{ meal.5 }}</a>{% endif %}</td>
+        <td>{% if meal.15 %}<a data-id="{{ meal.15.id }}" class="meal-link" href="#">{{ meal.15 }}</a>{% endif %}</td>
+        <td>{% if meal.25 %}<a data-id="{{ meal.25.id }}" class="meal-link" href="#">{{ meal.25 }}</a>{% endif %}</td>
+        <td>{% if meal.35 %}<a data-id="{{ meal.35.id }}" class="meal-link" href="#">{{ meal.35 }}</a>{% endif %}</td>
+        <td>{% if meal.45 %}<a data-id="{{ meal.45.id }}" class="meal-link" href="#">{{ meal.45 }}</a>{% endif %}</td>
+        <td>{% if meal.55 %}<a data-id="{{ meal.55.id }}" class="meal-link" href="#">{{ meal.55 }}</a>{% endif %}</td>
+        <td>{% if meal.65 %}<a data-id="{{ meal.65.id }}" class="meal-link" href="#">{{ meal.65 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">16:00-18:00</th>
+        <td>{% if meal.6 %}<a data-id="{{ meal.6.id }}" class="meal-link" href="#">{{ meal.6 }}</a>{% endif %}</td>
+        <td>{% if meal.16 %}<a data-id="{{ meal.16.id }}" class="meal-link" href="#">{{ meal.16 }}</a>{% endif %}</td>
+        <td>{% if meal.26 %}<a data-id="{{ meal.26.id }}" class="meal-link" href="#">{{ meal.26 }}</a>{% endif %}</td>
+        <td>{% if meal.36 %}<a data-id="{{ meal.36.id }}" class="meal-link" href="#">{{ meal.36 }}</a>{% endif %}</td>
+        <td>{% if meal.46 %}<a data-id="{{ meal.46.id }}" class="meal-link" href="#">{{ meal.46 }}</a>{% endif %}</td>
+        <td>{% if meal.56 %}<a data-id="{{ meal.56.id }}" class="meal-link" href="#">{{ meal.56 }}</a>{% endif %}</td>
+        <td>{% if meal.66 %}<a data-id="{{ meal.66.id }}" class="meal-link" href="#">{{ meal.66 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">18:00-20:00</th>
+        <td>{% if meal.7 %}<a data-id="{{ meal.7.id }} class="meal-link" href="#">{{ meal.7 }}</a>{% endif %}</td>
+        <td>{% if meal.17 %}<a data-id="{{ meal.17.id }}" class="meal-link" href="#">{{ meal.17 }}</a>{% endif %}</td>
+        <td>{% if meal.27 %}<a data-id="{{ meal.27.id }}" class="meal-link" href="#">{{ meal.27 }}</a>{% endif %}</td>
+        <td>{% if meal.37 %}<a data-id="{{ meal.37.id }}" class="meal-link" href="#">{{ meal.37 }}</a>{% endif %}</td>
+        <td>{% if meal.47 %}<a data-id="{{ meal.47.id }}" class="meal-link" href="#">{{ meal.47 }}</a>{% endif %}</td>
+        <td>{% if meal.57 %}<a data-id="{{ meal.57.id }}" class="meal-link" href="#">{{ meal.57 }}</a>{% endif %}</td>
+        <td>{% if meal.67 %}<a data-id="{{ meal.67.id }}" class="meal-link" href="#">{{ meal.67 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">20:00-22:00</th>
+        <td>{% if meal.8 %}<a data-id="{{ meal.8.id }}" class="meal-link" href="#">{{ meal.8 }}</a>{% endif %}</td>
+        <td>{% if meal.18 %}<a data-id="{{ meal.18.id }}" class="meal-link" href="#">{{ meal.18 }}</a>{% endif %}</td>
+        <td>{% if meal.28 %}<a data-id="{{ meal.28.id }}" class="meal-link" href="#">{{ meal.28 }}</a>{% endif %}</td>
+        <td>{% if meal.38 %}<a data-id="{{ meal.38.id }}" class="meal-link" href="#">{{ meal.38 }}</a>{% endif %}</td>
+        <td>{% if meal.48 %}<a data-id="{{ meal.48.id }}" class="meal-link" href="#">{{ meal.48 }}</a>{% endif %}</td>
+        <td>{% if meal.58 %}<a data-id="{{ meal.58.id }}" class="meal-link" href="#">{{ meal.58 }}</a>{% endif %}</td>
+        <td>{% if meal.68 %}<a data-id="{{ meal.68.id }}" class="meal-link" href="#">{{ meal.68 }}</a>{% endif %}</td>
+      </tr>
+      <tr>
+        <th scope="row">22:00-00:00</th>
+        <td>{% if meal.9 %}<a data-id="{{ meal.9.id }}" class="meal-link" href="#">{{ meal.9 }}</a>{% endif %}</td>
+        <td>{% if meal.19 %}<a data-id="{{ meal.19.id }}" class="meal-link" href="#">{{ meal.19 }}</a>{% endif %}</td>
+        <td>{% if meal.29 %}<a data-id="{{ meal.29.id }}" class="meal-link" href="#">{{ meal.29 }}</a>{% endif %}</td>
+        <td>{% if meal.39 %}<a data-id="{{ meal.39.id }}" class="meal-link" href="#">{{ meal.39 }}</a>{% endif %}</td>
+        <td>{% if meal.49 %}<a data-id="{{ meal.49.id }}" class="meal-link" href="#">{{ meal.49 }}</a>{% endif %}</td>
+        <td>{% if meal.59 %}<a data-id="{{ meal.59.id }}" class="meal-link" href="#">{{ meal.59 }}</a>{% endif %}</td>
+        <td>{% if meal.69 %}<a data-id="{{ meal.69.id }}" class="meal-link" href="#">{{ meal.69 }}</a>{% endif %}</td>
+      </tr>
+          </tbody>
+  </table>
+{% endblock %}
+

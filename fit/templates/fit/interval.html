@@ -1,0 +1,42 @@
+{% extends "fit/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/interval.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+<div id="layout">
+ 
+<div class="interval" style="margin-left: 200px; margin-right: 200px;">
+    Specify: <br>
+{{ timer.work }}
+{{ timer.rest }}
+{{ timer.interval }}
+
+
+<div id="work_desc">
+<h5>Work (sec): </h5><h5 id="work"></h5>
+</div>
+
+<div id="rest_desc">
+<h5>Rest (sec): </h5><h5 id="rest"></h5>
+</div>
+
+<div id="interval_desc">
+<h5>Intervals: </h5><h5 id="interval"></h5>
+</div>
+
+<div id="buttons">
+<input class="btn btn-success" id="start" type="submit" value="Start">
+
+<input class="btn btn-danger" id="stop" type="submit" value="Stop"> 
+<div class="space">
+</div>
+<input class="btn btn-primary" id="pause" type="submit" value="Pause">
+</div>
+<h4 id="congrats">Great job!</h4>
+
+</div>
+{% endblock %}
+

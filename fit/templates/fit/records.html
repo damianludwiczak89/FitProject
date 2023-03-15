@@ -1,0 +1,82 @@
+{% extends "fit/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/records.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<p>
+    <td><button id="add" type="button" class="btn btn-secondary" style="margin-top: 5px;">Add training</button></td>
+</p>
+<div id="form">
+    <form action="{% url 'records' %}" method="post">
+    {% csrf_token %}
+<p>
+    {{ add.Date }} {{ add.Time }} {{ add.Distance}}
+    {{ add.Discipline }}
+</p>
+<button type="submit" class="btn btn-success">Save</button>
+</form>
+</div>
+
+<div id="show" style="text-align: center;">
+  <p id="cardio_discipline"></p>
+  <p id="cardio_description"></p>
+  <p><button id="hide" type="button" class="btn btn-success">Hide</button> <button id="delete_button" type="button" class="btn btn-danger">Delete</button> </p>
+</div>
+
+<div id="delete" style="text-align: center;">
+  <p> Are you sure you want to delete?</p>
+   <p><button id="confirm_delete" type="button" class="btn btn-danger">Confirm</button></p>
+ </div>
+
+
+<table id="cardio_table" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Time (minutes)</th>
+        <th scope="col">Distance (km)</th>
+        <th scope="col">Average speed (km/h)</th>
+        <th scope="col">Discipline</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for cardio in cardios %}
+      <tr data-id="{{ cardio.id }}">
+        <td data-id="{{ cardio.id }}" class="link">{{ cardio.date }}</td>
+        <td data-id="{{ cardio.id }}" class="link">{{ cardio.time }}</td>
+        <td data-id="{{ cardio.id }}"class="link">{{ cardio.distance }}</td>
+        <td data-id="{{ cardio.id }}"class="link">{{ cardio.speed }}</td>
+        <td data-id="{{ cardio.id }}"class="link">{{ cardio.discipline }}</td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example" style="padding: 50px;">
+
+
+    <ul class="pagination justify-content-center">
+
+
+        {% if cardios.has_previous %}
+        
+        <li class="page-item"><a class="page-link" href="?page=1">1<<<</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ cardios.previous_page_number }}">{{ cardios.previous_page_number }}<</a></li>
+
+        {% endif %}
+        <li class="page-item"><a class="page-link">{{ cardios.number }}</a></li>
+        {% if cardios.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ cardios.next_page_number }}">>{{ cardios.next_page_number }}</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ cardios.paginator.num_pages }}">>>>{{ cardios.paginator.num_pages }}</a></li>
+    {% endif %}
+
+
+</ul>
+</nav>
+{% endblock %}
+

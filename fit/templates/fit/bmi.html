@@ -1,0 +1,19 @@
+{% extends "fit/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/bmi.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<form style="margin-top: 25px; margin-left: 200px; margin-right: 200px;">
+    Body Mass Index <br><br><br>
+{{ bmi.height }}
+{{ bmi.weight }}
+<input class="btn btn-success" type="submit" value="Calculate">
+</form>
+
+<h3 style="text-align: center; padding: 5px;"></h3>
+{% endblock %}
+

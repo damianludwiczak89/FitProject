@@ -1,0 +1,176 @@
+.training-link {
+    text-decoration: none;
+    color: black;
+}
+
+.meal-link {
+    text-decoration: none;
+    color: black;
+}
+
+.link {
+    cursor: pointer;
+}
+
+@keyframes grow {
+    from {
+        font-size: 20px;
+    }
+    to {
+        font-size: 35px;
+    }
+}
+
+@keyframes shrink {
+    from {
+        font-size: 35px;
+    }
+    to {
+        font-size: 20px;
+    }
+}
+
+#rest {
+
+    animation-name: shrink;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+
+    animation-name: grow;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+
+#work {
+    animation-name: shrink;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+
+    animation-name: grow;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+}
+@keyframes grow_congrats {
+    from {
+        font-size: 10px;
+    }
+    to {
+        font-size: 35px;
+    }
+}
+
+#congrats {
+    animation-name: grow_congrats;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-play-state: paused;
+    text-align: center;
+}
+
+#layout {
+    padding: 20px;
+}
+
+body {
+    background-color: rgba(240, 240, 230);
+    padding: 20px;
+    font-family: monospace;
+  }
+
+form {
+    text-align: center;
+    padding:15px;
+    background-color: rgba(230, 230, 230);
+    margin-bottom: 25px;
+}
+
+.interval {
+    text-align: center;
+    padding:15px;
+    background-color: rgba(230, 230, 230);
+    margin-bottom: 25px;
+}
+
+
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+.space {
+    width: 10px;
+    height: auto;
+    display: inline-block;
+  }
+  
+#start {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    
+    background-color: rgba(240, 240, 240);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px #28de10;
+    
+  }
+
+  textarea {
+    background-color: rgba(240, 240, 240); 
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px #28de10;
+  }
+
+  .page-link {
+    background-color: rgba(240, 240, 240); 
+  }
+
+  table {
+    background-color: rgba(230, 230, 230);
+  }
+
+.index {
+    padding: 25px; 
+    margin-right: 200px; 
+    margin-left: 200px;
+    background-color: rgba(230, 230, 230); 
+    margin-top: 25px; 
+    text-align: center;
+}
+
+.form-group {
+    text-align: center;
+    padding:5px;
+    background-color: rgba(230, 230, 230);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.form-control {
+    
+    background-color: rgba(240, 240, 240);
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px #28de10;
+    width: 20%;
+    
+
+  }

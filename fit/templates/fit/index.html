@@ -1,0 +1,30 @@
+{% extends "fit/layout.html" %}
+{% load static %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<h4 style="padding: 10px;">Hello, {{ user }}</h4>
+{% endif %}
+<h6>
+<p class="index">
+    <b>FIT</b>Project is a a website containing a handful of tools to help user get and stay fit. Here you can keep track
+    of your running and cycling records, body measurements over time, manage training plans and diet. 
+    All of these are available under the calendars section from the menu above. Additionally, 
+    you can also find here an interval timer that you can configure for your training and use directly while performing popular 
+    high intensity interval training (HIIT). Body mass index (BMI) calculator is also available. Please register or log in to gain
+    access to all features.
+</p>
+</h6>
+
+<h6>
+    <p class="index">
+        This website was created as a final project for <a href = "https://cs50.harvard.edu/web/2020/">
+            CS50 Web Programming with Python and Javascript</a> course.
+    </p>
+</h6>
+
+
+
+{% endblock %}

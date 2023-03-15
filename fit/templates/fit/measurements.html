@@ -1,0 +1,82 @@
+{% extends "fit/layout.html" %}
+{% load static %}
+
+{% block script %}
+<script src="{% static 'fit/measurements.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<p>
+    <td><button id="add" type="button" class="btn btn-secondary" style="margin-top: 5px;">Add measurements</button></td>
+</p>
+<div id="form">
+    <form action="{% url 'measurements' %}" method="post">
+    {% csrf_token %}
+<p>
+    {{ add.Date }} {{ add.Weight }} {{ add.Waist }} {{ add.Chest }} {{ add.Thigh }} {{ add.Arm }} <br>{{ add.Notes }}
+</p>
+<button type="submit" class="btn btn-success">Save</button>
+</form>
+</div>
+
+<div id="show" style="text-align: center;">
+  <p id="measurements"></p>
+  <p><button id="hide" type="button" class="btn btn-success">Hide</button> <button id="delete_button" type="button" class="btn btn-danger">Delete</button> </p>
+</div>
+
+<div id="delete" style="text-align: center;">
+  <p> Are you sure you want to delete?</p>
+   <p><button id="confirm_delete" type="button" class="btn btn-danger">Confirm</button></p>
+ </div>
+
+
+<table id="measurements_table" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Weight (kg)</th>
+        <th scope="col">Waist (cm)</th>
+        <th scope="col">Chest (cm)</th>
+        <th scope="col">Thigh (cm)</th>
+        <th scope="col">Arm (cm)</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for measurement in user_measurements %}
+      <tr data-id="{{ measurement.id }}">
+        <td data-id="{{ measurement.id }}" class="link">{{ measurement.date }}</td>
+        <td data-id="{{ measurement.id }}" class="link">{{ measurement.weight }}</td>
+        <td data-id="{{ measurement.id }}"class="link">{% if measurement.waist %}{{ measurement.waist }}{% endif %}</td>
+        <td data-id="{{ measurement.id }}"class="link">{% if measurement.chest %}{{ measurement.chest }}{% endif %}</td>
+        <td data-id="{{ measurement.id }}"class="link">{% if measurement.thigh %}{{ measurement.thigh }}{% endif %}</td>
+        <td data-id="{{ measurement.id }}"class="link">{% if measurement.arm %}{{ measurement.arm }}{% endif %}</td>
+      </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example" style="padding: 50px;">
+
+
+    <ul class="pagination justify-content-center">
+
+
+        {% if user_measurements.has_previous %}
+        
+        <li class="page-item"><a class="page-link" href="?page=1">1<<<</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ user_measurements.previous_page_number }}">{{ user_measurements.previous_page_number }}</a></li>
+
+        {% endif %}
+        <li class="page-item"><a class="page-link">{{ user_measurements.number }}</a></li>
+        {% if user_measurements.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ user.measurements.next_page_number }}">>{{ user_measurements.next_page_number }}</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ user.measurements.paginator.num_pages }}">>>>{{ user_measurements.paginator.num_pages }}</a></li>
+    {% endif %}
+
+
+</ul>
+</nav>
+{% endblock %}
+
