@@ -460,5 +460,3 @@ def delete_measurements(request, measurement_id):
     single_measurements.delete()
     return JsonResponse({"message": "Deleted successfully"}, safe=False)
 
-def calories(request):
-    return render(request, "fit/calories.html")
