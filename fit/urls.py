@@ -13,6 +13,7 @@ urlpatterns = [
     path("diet", views.diet, name="diet"),
     path("records", views.records, name="records"),
     path("measurements", views.measurements, name="measurements"),
+    path("guest_login", views.guest_login, name="guest_login"),
 
     # API routes
     path("training/<int:training_id>", views.show_training, name="show_training"),

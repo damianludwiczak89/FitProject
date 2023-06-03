@@ -460,3 +460,15 @@ def delete_measurements(request, measurement_id):
     single_measurements.delete()
     return JsonResponse({"message": "Deleted successfully"}, safe=False)
 
+def guest_login(request):
+    # Attempt to sign user in
+    user = authenticate(request, username="guest", password="guest")
+
+    # Check if authentication successful
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse("index"))
+    else:
+        return render(request, "fit/login.html", {
+            "message": "Invalid username and/or password."
+        })

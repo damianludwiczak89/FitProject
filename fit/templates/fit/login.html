@@ -18,6 +18,10 @@
     </div>
     <input class="btn btn-primary" type="submit" value="Login">
 </form>
+<form action="{% url 'guest_login' %}" method="post">
+    {% csrf_token %}
+<input class="btn btn-success" id="login_button" type="submit" value="Want to review website? Log in as a guest">
+</form>
 </div>
 <div style="margin-left: 200px; padding-top: 10px;">
 Don't have an account? <a href="{% url 'register' %}">Register here.</a>
