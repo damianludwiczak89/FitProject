@@ -37,12 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(meal => {
 
-                // If button is clicked again, hide the single meal view
-                if (document.querySelector('#show').style.display === "block") {
-                    document.querySelector('#show').style.display = "none";
-                    document.querySelector('#delete').style.display = "none";
-                    return;
-                }
                 document.querySelector('#show').style.display = "block";
                 document.querySelector("#meal_name").innerHTML = `${meal.day} ${meal.time}: ${meal.name}`;
                 document.querySelector("#meal_description").innerHTML = `${meal.description}`;
