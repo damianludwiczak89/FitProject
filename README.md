@@ -2,7 +2,7 @@
 
 # FITProject
 
-http://fitproject.pythonanywhere.com
+http://fitproject.pythonanywhere.com - sometimes loads on a 2nd time, server side issue
 
 ## Video Demo: https://youtu.be/pqqkzec3ecU
 
